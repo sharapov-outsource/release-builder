@@ -1,11 +1,12 @@
 # release builder
 A little bash script to automatically build a release
 
-Introduction
-============================
+### Install notes
 
-Installation using Composer
-============================
+1. Set initial configuration for your project
+2. Change commands to create symlinks to a shared folders
+3. Add executable permissions to the script
+4. To deploy tag run ./deploy.sh and type tag id
 
 Changelog
 =========

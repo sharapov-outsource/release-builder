@@ -9,7 +9,7 @@ GIT_REPO_NAME="REPO_NAME"
 APACHE_USER="www-data"
 APACHE_GROUP="www-data"
 
-# Bitbucket/github repos. You can use your own repos.
+# Bitbucket/github repos. You can use your own repo.
 # git@bitbucket.org
 # git@github.com
 GIT_REPO="git@bitbucket.org:"${GIT_REPO_OWNER}/${GIT_REPO_NAME}".git"
@@ -47,7 +47,7 @@ TARGET_TMP_DIR="release/"${TMP_DIRECTORY_SLUG}
 
 # CLONE GIT DIR
 echo "Cloning GIT repository to the temp directory"
-git clone --progress $GIT_REPO $TARGET_TMP_DIR || { echo "Unable to clone repo"; exit 1; }
+git clone --progress $GIT_REPO $TARGET_TMP_DIR || { echo "Unable to clone repo"$GIT_REPO; exit 1; }
 
 # MOVE INTO GIT DIR
 cd $ROOT_PATH$TARGET_TMP_DIR
@@ -80,7 +80,7 @@ echo "Creating symlinks"
 ln -s $DIRECTORY_ROOT/vendor vendor
 ln -s $DIRECTORY_ROOT/shared/data data
 ln -s $DIRECTORY_ROOT/shared/uploads public_html/uploads
-ln -s $DIRECTORY_ROOT/shared/data/logs log
+ln -s $DIRECTORY_ROOT/shared/data/logs logs
 ln -s $DIRECTORY_ROOT/shared/config/local.php config/autoload/local.php
 
 #read -p "PRESS [ENTER] TO CHANGE WEB-ROOT AND RUN TAG"
@@ -88,7 +88,9 @@ ln -s $DIRECTORY_ROOT/shared/config/local.php config/autoload/local.php
 echo "Changing web root"
 ln -sfnv $ROOT_PATH$TARGET_RELEASE_DIR $ROOT_PATH"current"
 
-echo "Changing permissions"
-chown -h $APACHE_USER.$APACHE_USER public_html/uploads
+#echo "Changing permissions"
+#chown -h $APACHE_USER.$APACHE_USER public_html/uploads
+#chown -h $APACHE_USER.$APACHE_USER logs
+#chown -h $APACHE_USER.$APACHE_USER data
 
 echo "Version "${VERSION}" has been released"
