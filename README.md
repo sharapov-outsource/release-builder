@@ -15,4 +15,4 @@ Changelog
 
 Links
 =====
-[GitHub](https://github.com/sharapovweb/release-builder)
+[GitHub](https://github.com/sharapov-outsource/release-builder)
